@@ -13,3 +13,7 @@ sky:
     password: 273621
     database: 10
 
+  wechat:
+    appid: wx781c0331fa1e35c8
+    secret: 853524c1966d9fdb16f301427c5511fe
+
