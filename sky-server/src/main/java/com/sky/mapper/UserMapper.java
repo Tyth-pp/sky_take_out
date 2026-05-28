@@ -1,6 +1,6 @@
 package com.sky.mapper;
 
-import org.apache.catalina.User;
+import com.sky.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 

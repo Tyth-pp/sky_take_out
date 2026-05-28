@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
     public User wxlogin(UserLoginDTO userLoginDTO) {
         String openid = getOpenid(userLoginDTO.getCode());
 
-        if(openid != null){
+        if(openid == null){
             throw new LoginFailedException(MessageConstant.LOGIN_FAILED);
         }
 
@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
 
     private String getOpenid(String code) {
         Map<String, String> map = new HashMap<>();
-        map.put("openid", weChatProperties.getAppid());
+        map.put("appid", weChatProperties.getAppid());
         map.put("secret", weChatProperties.getSecret());
         map.put("js_code", code);
         map.put("grant_type", "authorization_code");
