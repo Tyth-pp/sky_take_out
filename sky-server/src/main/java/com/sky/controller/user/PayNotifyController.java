@@ -6,9 +6,12 @@ import com.alibaba.fastjson.JSONObject;
 import com.sky.properties.WeChatProperties;
 import com.sky.service.OrderService;
 import com.wechat.pay.contrib.apache.httpclient.util.AesUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.entity.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +25,7 @@ import java.util.HashMap;
  */
 @RestController
 @RequestMapping("/notify")
+@Api(tags = "支付回调相关接口")
 @Slf4j
 public class PayNotifyController {
     @Autowired
@@ -32,9 +36,10 @@ public class PayNotifyController {
     /**
      * 支付成功回调
      *
-     * @param request
+     * @param
      */
-    @RequestMapping("/paySuccess")
+    @PostMapping("/paySuccess")
+    @ApiOperation("支付成功回调")
     public void paySuccessNotify(HttpServletRequest request, HttpServletResponse response) throws Exception {
         //读取数据
         String body = readData(request);
